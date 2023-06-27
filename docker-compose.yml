@@ -1,0 +1,11 @@
+version: "2"
+services:
+  db:
+    image: postgis/postgis
+    restart: always
+    ports:
+      - "5534:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: news_service_dev
