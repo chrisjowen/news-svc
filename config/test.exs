@@ -23,7 +23,7 @@ config :news_service, NewsService.Repo,
   show_sensitive_data_on_connection_error: true,
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10,
-  port: 5532,
+  port: 5535,
   types: NewsService.PostgresTypes
 
 # We don't run a server during test. If one is required,
@@ -32,6 +32,9 @@ config :news_service, NewsService.Web.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "P2zLD/0XMpatF5D2BIt+WdD0dNxQ+7tdNZGjSmQkCWqZGsZItDtY/VAoR3vYRXbj",
   server: false
+
+
+config :news_service, Oban, queues: false, plugins: false
 
 # In test we don't send emails.
 config :news_service, NewsService.Mailer, adapter: Swoosh.Adapters.Test

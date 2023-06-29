@@ -17,6 +17,7 @@ defmodule NewsService.Workers.ScheduledWorker do
     Logger.info("Scheduling #{length(schedules)} feeds")
 
     schedules
+    |> Enum.take(1)
     |> Enum.each(fn fs -> schedule_worker(fs) end)
   end
 
@@ -45,7 +46,7 @@ defmodule NewsService.Workers.ScheduledWorker do
 
     [
       # {NewsService.Workers.NewsApiWorker, args},
-      # {NewsService.Workers.YouTubeApiWorker, args},
+      {NewsService.Workers.YouTubeApiWorker, args},
       {NewsService.Workers.MediumSearchWorker, args}
     ]
     |> Enum.each(fn {module, params} ->

@@ -17,9 +17,8 @@ defmodule NewsService.Workers.YouTubeApiWorker do
         args |> Map.new(fn {k, v} -> {String.to_atom(k), v} end)
       )
 
-    with {:ok, results} <- YouTubeApiClient.search(options),
-         {:ok, _} <- persist_results(results, options) do
-      :ok
+    with {:ok, results} <- YouTubeApiClient.search(options) do
+      persist_results(results, options)
     else
       error ->
         Logger.error(inspect(error))
@@ -51,6 +50,7 @@ defmodule NewsService.Workers.YouTubeApiWorker do
         "ext_id" => item["id"]["videoId"]
       })
       |> Repo.insert!()
+      |> IO.inspect()
     end)
 
     :ok

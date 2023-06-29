@@ -4,7 +4,7 @@ defmodule NewsApi.Clients.YouTubeApiClient do
   @endpoint "https://www.googleapis.com/youtube/v3"
 
 
-  def search(options \\ %SearchOptions{}) do
+  def search(options) do
    get("/search?#{qs(options)}")
   end
 

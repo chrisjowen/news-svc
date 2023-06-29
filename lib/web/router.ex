@@ -13,21 +13,14 @@ defmodule NewsService.Web.Router do
     plug :put_secure_browser_headers
   end
 
-
-
-
-
   scope "/api", NewsService do
     pipe_through(:api)
     # Unsecured
 
     resources "/feed", FeedItemController
     resources "/schedule", FeedScheduleController
-
     post "/schedule/run", FeedScheduleController, :run_schedules
-
   end
-
 
   # Enables LiveDashboard only for development
   if Mix.env() in [:dev, :test] do

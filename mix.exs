@@ -45,7 +45,8 @@ defmodule NewsService.MixProject do
       {:phoenix_api_toolkit, "~> 2.0.0"},
       {:cors_plug, "~> 3.0"},
       {:openai, "~> 0.5.2"},
-      {:oban, "~> 2.14"}
+      {:oban, "~> 2.14"},
+      {:mock, "~> 0.3.0", only: :test}
 
     ]
   end

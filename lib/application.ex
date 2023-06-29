@@ -16,8 +16,6 @@ defmodule NewsService.Application do
     ]
 
     opts = [strategy: :one_for_one, name: NewsService.Supervisor]
-
-
     events = [[:oban, :job, :start], [:oban, :job, :stop], [:oban, :job, :exception]]
 
     :telemetry.attach_many("oban-logger", events, &NewsService.ObanLogger.handle_event/4, [])
