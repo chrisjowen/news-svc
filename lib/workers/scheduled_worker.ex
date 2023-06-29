@@ -17,7 +17,7 @@ defmodule NewsService.Workers.ScheduledWorker do
     Logger.info("Scheduling #{length(schedules)} feeds")
 
     schedules
-    |> Enum.take(1)
+    # |> Enum.take(1)
     |> Enum.each(fn fs -> schedule_worker(fs) end)
   end
 
